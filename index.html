@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Банк Онлайн</title>
+  <script>
+    document.documentElement.classList.add('dark');
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; transition: background 0.5s, color 0.5s; }
+    .card { transition: all 0.3s ease, transform 0.3s ease; }
+    .card:hover { transform: translateY(-5px); }
+  </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 dark:text-white">
+
+  <header class="bg-blue-600 dark:bg-blue-800 text-white p-4 text-center text-xl">Банк Онлайн</header>
+
+  <nav class="flex justify-around bg-white dark:bg-gray-800 p-2 shadow">
+    <button>Баланс</button>
+    <button>Переводы</button>
+    <button>Вклады</button>
+    <button>История</button>
+    <button>Поддержка</button>
+    <button>Оплата</button>
+    <button>Вход</button>
+  </nav>
+
+  <main class="p-4 grid gap-4">
+    <section id="balance" class="card bg-white dark:bg-gray-800 p-4 shadow rounded">
+      <h2 class="text-lg">Ваш баланс:</h2>
+      <p class="text-2xl">10,000₸</p>
+    </section>
+
+    <section id="actions" class="grid grid-cols-2 gap-4">
+      <button class="bg-green-500 hover:bg-green-600 text-white p-2 rounded">Перевести деньги</button>
+      <button class="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded">Оформить вклад</button>
+      <button class="bg-purple-500 hover:bg-purple-600 text-white p-2 rounded">Оплатить услуги</button>
+      <button class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded">Взять кредит</button>
+    </section>
+
+    <section id="history" class="card bg-white dark:bg-gray-800 p-4 shadow rounded">
+      <h2 class="text-lg">История операций:</h2>
+      <ul>
+        <li>Перевод 5,000₸ другу</li>
+        <li>Оплата интернета 3,000₸</li>
+      </ul>
+    </section>
+
+    <section id="reviews" class="card bg-white dark:bg-gray-800 p-4 shadow rounded">
+      <h2 class="text-lg">Отзывы клиентов:</h2>
+      <ul id="reviewsList">
+        <li>⭐️⭐️⭐️⭐️⭐️ Отличный сервис!</li>
+        <li>⭐️⭐️⭐️ Быстро, но могли бы быть вежливее.</li>
+        <li>⭐️⭐️⭐️⭐️ Всё понравилось, спасибо!</li>
+      </ul>
+      <input type="text" id="reviewInput" class="border p-2 w-full mt-2" placeholder="Ваш отзыв...">
+      <button id="sendReview" class="bg-green-600 hover:bg-green-700 text-white p-2 w-full mt-2">Отправить отзыв</button>
+    </section>
+
+    <section id="chat" class="card bg-white dark:bg-gray-800 p-4 shadow rounded">
+      <h2 class="text-lg">Чат поддержки</h2>
+      <div id="messages" class="h-32 overflow-y-auto border p-2 mb-2">Здравствуйте! Чем помочь?</div>
+      <input type="text" id="messageInput" class="border p-2 w-full" placeholder="Ваше сообщение...">
+      <button id="sendMessage" class="bg-blue-600 hover:bg-blue-700 text-white p-2 w-full mt-2">Отправить</button>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById('sendMessage').onclick = () => {
+      const input = document.getElementById('messageInput');
+      const message = input.value.trim();
+      if (message) {
+        const messages = document.getElementById('messages');
+        messages.innerHTML += `<div>${message}</div>`;
+        input.value = '';
+      }
+    };
+
+    document.getElementById('sendReview').onclick = () => {
+      const input = document.getElementById('reviewInput');
+      const review = input.value.trim();
+      if (review) {
+        const reviewsList = document.getElementById('reviewsList');
+        reviewsList.innerHTML += `<li>${review}</li>`;
+        input.value = '';
+      }
+    };
+  </script>
+
+</body>
+</html>
